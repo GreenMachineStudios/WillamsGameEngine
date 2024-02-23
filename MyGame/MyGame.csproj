@@ -22,7 +22,7 @@
     <None Update="Resources\background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\boom.wav">
+    <None Update="Resources\bam.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Resources\Courneuf-Regular.ttf">
@@ -58,10 +58,10 @@
     <None Update="Resources\explosion09.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\laser.png">
+    <None Update="Resources\invader.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\meteor.png">
+    <None Update="Resources\laser.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Resources\README.md">

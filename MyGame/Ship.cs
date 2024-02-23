@@ -8,15 +8,16 @@ namespace MyGame
     class Ship : GameObject
     {
         private readonly Sprite _sprite = new();
-        private const float Speed = 0.8f;
+        private const float Speed = 0.4f;
         private const int FireDelay = 10;
         private int _fireTimer;
         private bool canFire = true;
+        private bool twoFireMode = false;
 
         public Ship()
         {
             _sprite.Texture = Game.GetTexture("Resources/ship.png");
-            _sprite.Position = new Vector2f(100, 100);
+            _sprite.Position = new Vector2f((Game.RenderWindow.Size.X - _sprite.GetGlobalBounds().Width) / 2, 720);
         }
 
         public override void Draw()
@@ -32,15 +33,15 @@ namespace MyGame
 
             int msElapsed = elapsed.AsMilliseconds();
 
-            if (x > Game.RenderWindow.Size.X) { x = 0; }
-            if (x < 0) { x = 800; }
-            if (y > Game.RenderWindow.Size.Y) { y = 0; }
-            if (y < 0) { y = 800; }
+            //if (Keyboard.IsKeyPressed(Keyboard.Key.Up)) { y -= Speed * msElapsed; }
+            //if (Keyboard.IsKeyPressed(Keyboard.Key.Down)) { y += Speed * msElapsed; }
 
-            if (Keyboard.IsKeyPressed(Keyboard.Key.Up)) { y -= Speed * msElapsed; }
-            if (Keyboard.IsKeyPressed(Keyboard.Key.Down)) { y += Speed * msElapsed; }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Left)) { x -= Speed * msElapsed; }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Right)) { x += Speed * msElapsed; }
+
+            if (x < 0) { x = 0; }
+            if (x > Game.RenderWindow.Size.X - _sprite.GetGlobalBounds().Width) { x = Game.RenderWindow.Size.X - _sprite.GetGlobalBounds().Width - 4; }
+
             _sprite.Position = new Vector2f(x, y);
 
             if (_fireTimer > 0) { _fireTimer -= msElapsed; }
@@ -51,10 +52,25 @@ namespace MyGame
                 {
                     _fireTimer = FireDelay;
                     FloatRect bounds = _sprite.GetGlobalBounds();
-                    float laserX = x + bounds.Width;
-                    float laserY = y + bounds.Height / 2.0f;
-                    Laser laser = new Laser(new Vector2f(laserX, laserY));
-                    Game.CurrentScene.AddGameObject(laser);
+                    if (twoFireMode)
+                    {
+                        float laserX = x + 6;
+                        float laserY = y + 20;
+                        Laser laser = new Laser(new Vector2f(laserX, laserY));
+                        Game.CurrentScene.AddGameObject(laser);
+
+                        laserX = x + bounds.Width - 18;
+                        laserY = y + 20;
+                        laser = new Laser(new Vector2f(laserX, laserY));
+                        Game.CurrentScene.AddGameObject(laser);
+                    }
+                    else
+                    {
+                        float laserX = x + bounds.Width / 2.0f - 5;
+                        float laserY = y;
+                        Laser laser = new Laser(new Vector2f(laserX, laserY));
+                        Game.CurrentScene.AddGameObject(laser);
+                    }
                     canFire = false;
                 }
             }
