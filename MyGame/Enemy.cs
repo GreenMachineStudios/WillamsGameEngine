@@ -29,10 +29,13 @@ namespace MyGame
         {
             return _sprite.GetGlobalBounds();
         }
+
         public override void HandleCollision(GameObject otherGameObject)
         {
             if (otherGameObject.HasTag("laser"))
             {
+                GameScene scene = (GameScene)Game.CurrentScene;
+                scene.IncrementScore();
                 otherGameObject.MakeDead();
                 Vector2f pos = _sprite.Position;
                 pos.X = pos.X + (float)_sprite.GetGlobalBounds().Width / 2.0f;

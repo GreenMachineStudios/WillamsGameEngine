@@ -1,5 +1,7 @@
 ﻿using GameEngine;
 
+//Resource credits: pixabay, craftpix, and me
+
 namespace MyGame
 {
     static class MyGame

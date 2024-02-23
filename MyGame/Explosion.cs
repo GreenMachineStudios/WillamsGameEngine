@@ -30,15 +30,16 @@ namespace MyGame
         private void SetUpExplosionAnimation()
         {
             var frames = new List<IntRect>
-              { new IntRect( 0, 0, 64, 64), 
-                new IntRect( 64, 0, 64, 64),
-                new IntRect(128, 0, 64, 64),
-                new IntRect(192, 0, 64, 64),
-                new IntRect(256, 0, 64, 64),
-                new IntRect(320, 0, 64, 64),
-                new IntRect(384, 0, 64, 64),
-                new IntRect(448, 0, 64, 64),
-                new IntRect(512, 0, 64, 64) 
+              { new IntRect( 1, 1, 256, 256), 
+                new IntRect( 259, 1, 256, 256),
+                new IntRect(517, 1, 256, 256),
+                new IntRect(775, 1, 256, 256),
+                new IntRect(1033, 1, 256, 256),
+                new IntRect(1291, 1, 256, 256),
+                new IntRect(1549, 1, 256, 256),
+                new IntRect(1807, 1, 256, 256),
+                new IntRect(2065, 1, 256, 256),
+                new IntRect(2323, 1, 256, 256)
                };
             AddAnimation("explosion", frames);
         }
