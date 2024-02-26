@@ -2,7 +2,13 @@
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-using System;
+/* Todo:
+ * Opening scene
+ * Scrolling background
+ * highscores with files
+ * differient enemies
+ * level difficulty
+ */
 
 namespace MyGame
 {
