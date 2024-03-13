@@ -16,6 +16,9 @@ namespace MyGame
             _music.Volume = 10;
             _music.Play();
 
+            Background background = new Background(new Vector2f(0, 0));
+            AddGameObject(background);
+
             Ship ship = new();
             AddGameObject(ship);
 
@@ -24,9 +27,6 @@ namespace MyGame
 
             Score score = new Score(new Vector2f(10f, 10f));
             AddGameObject(score);
-
-            Background background = new Background(new Vector2f(0, 0));
-            AddGameObject(background);
         }
 
         public int GetScore()
