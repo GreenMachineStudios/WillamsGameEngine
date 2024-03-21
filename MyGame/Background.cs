@@ -29,7 +29,7 @@ namespace MyGame
         public override void Update(Time elapsed)
         {
             Vector2f pos = _sprite.Position;
-            Vector2f pos2 = _sprite.Position;
+            Vector2f pos2 = _sprite2.Position;
 
             if (pos.Y > Game.RenderWindow.Size.Y)
             {
