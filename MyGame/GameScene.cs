@@ -16,6 +16,9 @@ namespace MyGame
             _music.Volume = 10;
             _music.Play();
 
+            Background background = new Background(new Vector2f(0, 0));
+            AddGameObject(background);
+
             Ship ship = new();
             AddGameObject(ship);
 

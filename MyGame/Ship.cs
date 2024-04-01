@@ -16,6 +16,7 @@ namespace MyGame
 
         public Ship()
         {
+            AssignTag("ship");
             SetCollisionCheckEnabled(true);
             _sprite.Texture = Game.GetTexture("Resources/ship.png");
             _sprite.Position = new Vector2f((Game.RenderWindow.Size.X - _sprite.GetGlobalBounds().Width) / 2, 720);
@@ -32,10 +33,10 @@ namespace MyGame
             {
                 GameScene scene = (GameScene)Game.CurrentScene;
                 Vector2f pos = _sprite.Position;
+
                 pos.X = pos.X + (float)_sprite.GetGlobalBounds().Width / 2.0f;
                 pos.Y = pos.Y + (float)_sprite.GetGlobalBounds().Height / 2.0f;
-                Explosion explosion = new Explosion(pos);
-                Game.CurrentScene.AddGameObject(explosion);
+
                 scene.DecrementLives();
             }
         }
