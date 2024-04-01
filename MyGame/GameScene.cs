@@ -27,6 +27,12 @@ namespace MyGame
 
             Score score = new Score(new Vector2f(10f, 10f));
             AddGameObject(score);
+
+            LifeCounter lifeCounter = new LifeCounter(new Vector2f(628f, 10f));
+            AddGameObject(lifeCounter);
+
+            TwoFireModeText modeText = new TwoFireModeText(new Vector2f(280f, 10f));
+            AddGameObject(modeText);
         }
 
         public int GetScore()
@@ -39,6 +45,11 @@ namespace MyGame
             _score++;
         }
 
+        public void DecrementScore(int howmuch)
+        {
+            _score -= howmuch;
+        }
+
         public int GetLives()
         {
             return _lives;
@@ -47,7 +58,7 @@ namespace MyGame
         public void DecrementLives()
         {
             _lives--;
-            if (_lives == 0)
+            if (_lives < 0)
             {
                 _music.Stop();
                 GameOverScene gameOverScene = new GameOverScene(_score);

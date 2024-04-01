@@ -12,7 +12,7 @@ namespace MyGame
         private const int FireDelay = 300;
         private int _fireTimer;
         private bool canFire = true;
-        private bool twoFireMode = false;
+        public static bool twoFireMode = false;
 
         public Ship()
         {
@@ -54,14 +54,16 @@ namespace MyGame
 
             int msElapsed = elapsed.AsMilliseconds();
 
-            //if (Keyboard.IsKeyPressed(Keyboard.Key.Up)) { y -= Speed * msElapsed; }
-            //if (Keyboard.IsKeyPressed(Keyboard.Key.Down)) { y += Speed * msElapsed; }
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Up)) { y -= Speed * msElapsed; }
+            if (Keyboard.IsKeyPressed(Keyboard.Key.Down)) { y += Speed * msElapsed; }
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.Left)) { x -= Speed * msElapsed; }
             if (Keyboard.IsKeyPressed(Keyboard.Key.Right)) { x += Speed * msElapsed; }
 
             if (x < 0) { x = 0; }
+            if (y < 0) { y = 0; }
             if (x > Game.RenderWindow.Size.X - _sprite.GetGlobalBounds().Width) { x = Game.RenderWindow.Size.X - _sprite.GetGlobalBounds().Width - 4; }
+            if (y > Game.RenderWindow.Size.Y - _sprite.GetGlobalBounds().Height) { y = Game.RenderWindow.Size.Y - _sprite.GetGlobalBounds().Height - 4; }
 
             _sprite.Position = new Vector2f(x, y);
 
@@ -99,6 +101,7 @@ namespace MyGame
             {
                 canFire = true;
             }
+
         }
     }
 }
