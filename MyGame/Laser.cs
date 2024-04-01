@@ -7,7 +7,7 @@ namespace MyGame
     class Laser : GameObject
     {
         private readonly Sound _zap = new Sound();
-        private const float Speed = 1.2f;
+        private const float Speed = 1.0f;
         private readonly Sprite _sprite = new Sprite();
 
         public Laser(Vector2f pos)

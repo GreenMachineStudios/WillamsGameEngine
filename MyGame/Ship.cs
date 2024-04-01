@@ -2,7 +2,6 @@
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-using System;
 
 namespace MyGame
 {
@@ -10,7 +9,7 @@ namespace MyGame
     {
         private readonly Sprite _sprite = new();
         private const float Speed = 0.4f;
-        private const int FireDelay = 10;
+        private const int FireDelay = 300;
         private int _fireTimer;
         private bool canFire = true;
         private bool twoFireMode = false;

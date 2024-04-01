@@ -8,10 +8,10 @@ namespace MyGame
     {
         private int _score;
         private int _lives = 3;
+        Sound _music = new Sound();
 
         public GameScene()
         {
-            Sound _music = new Sound();
             _music.SoundBuffer = Game.GetSoundBuffer("Resources/gameMusic.wav");
             _music.Volume = 10;
             _music.Play();
@@ -46,6 +46,7 @@ namespace MyGame
             _lives--;
             if (_lives == 0)
             {
+                _music.Stop();
                 GameOverScene gameOverScene = new GameOverScene(_score);
                 Game.SetScene(gameOverScene);
             }
